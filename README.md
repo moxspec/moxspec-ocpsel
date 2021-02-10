@@ -1,7 +1,7 @@
 moxspec-ocpsel
 ===
 
-[![CircleCI](https://circleci.com/gh/actapio/moxspec-ocpsel.svg?style=shield&circle-token=461cacb242f68ee6efb7ec5b15b7b2984ccdd49a461cacb242f68ee6efb7ec5b15b7b2984ccdd49a)](https://circleci.com/gh/actapio/moxspec-occpsel)
+[![CircleCI](https://circleci.com/gh/actapio/moxspec-ocpsel.svg?style=shield&circle-token=eba3eea470549e9eb8de10b6275735e12c622ab3)](https://circleci.com/gh/actapio/moxspec-occpsel)
 [![Maintainability](https://api.codeclimate.com/v1/badges/95c9c7e8b41f759331d0/maintainability)](https://codeclimate.com/repos/6023e424911fcc41ac002f11/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/95c9c7e8b41f759331d0/test_coverage)](https://codeclimate.com/repos/6023e424911fcc41ac002f11/test_coverage)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
