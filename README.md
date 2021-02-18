@@ -1,9 +1,9 @@
 moxspec-ocpsel
 ===
 
-[![CircleCI](https://circleci.com/gh/moxspec/moxspec-ocpsel.svg?style=shield&circle-token=eba3eea470549e9eb8de10b6275735e12c622ab3)](https://circleci.com/gh/actapio/moxspec-occpsel)
-[![Maintainability](https://api.codeclimate.com/v1/badges/95c9c7e8b41f759331d0/maintainability)](https://codeclimate.com/repos/6023e424911fcc41ac002f11/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/95c9c7e8b41f759331d0/test_coverage)](https://codeclimate.com/repos/6023e424911fcc41ac002f11/test_coverage)
+[![CircleCI](https://circleci.com/gh/moxspec/moxspec-ocpsel.svg?style=shield&circle-token=eba3eea470549e9eb8de10b6275735e12c622ab3)](https://circleci.com/gh/moxspec/moxspec-occpsel)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4a615055a788795e5384/maintainability)](https://codeclimate.com/github/moxspec/moxspec-ocpsel/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4a615055a788795e5384/test_coverage)](https://codeclimate.com/github/moxspec/moxspec-ocpsel/test_coverage)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 An OCP SEL decoder
