@@ -1,8 +1,9 @@
-package main
+package ocpsel
 
 import "strings"
 
-func parseBody(bod []byte) [][]string {
+// ParseText parses given ipmitool output
+func ParseText(bod []byte) [][]string {
 	if len(bod) == 0 {
 		return [][]string{}
 	}
@@ -39,7 +40,7 @@ func parseBody(bod []byte) [][]string {
 	return chunkList
 }
 
-func parseChunkList(chunkList [][]string) []string {
+func ParseChunkList(chunkList [][]string) []string {
 	var result []string
 	for _, chunk := range chunkList {
 		result = append(result, parseChunk(chunk)...)
@@ -50,14 +51,14 @@ func parseChunkList(chunkList [][]string) []string {
 func parseChunk(chunk []string) []string {
 	gens, sens, eds := extractChunkInfo(chunk)
 
-	res, err := decode(sens, gens, eds)
+	res, err := Decode(sens, gens, eds)
 	if err != nil {
 		return []string{}
 	}
 
 	return []string{
 		strings.Join(chunk, "\n"),
-		res.printIndent(" "),
+		res.SummaryIndent(" "),
 		"",
 	}
 }

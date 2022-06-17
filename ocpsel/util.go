@@ -1,10 +1,17 @@
-package main
+package ocpsel
 
 import (
 	"fmt"
 	"math"
 	"strings"
 )
+
+func splitEventData(ed uint64) (byte, byte, byte) {
+	ed1 := byte((ed >> 16) & 0xFF)
+	ed2 := byte((ed >> 8) & 0xFF)
+	ed3 := byte(ed & 0xFF)
+	return ed1, ed2, ed3
+}
 
 func pick(ed byte, from, to uint) (byte, error) {
 	if from > to || to > 7 {

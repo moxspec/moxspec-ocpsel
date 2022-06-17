@@ -1,6 +1,45 @@
-package main
+package ocpsel
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
+
+// Decode decodes given sensor number, generator number, and evend data
+func Decode(sens, gens, eds string) (record, error) {
+	sen, err := strconv.ParseUint(sens, 16, 32)
+	if err != nil {
+		return record{}, err
+	}
+
+	gen, err := strconv.ParseUint(gens, 16, 32)
+	if err != nil {
+		return record{}, err
+	}
+
+	ed, err := strconv.ParseUint(eds, 16, 32)
+	if err != nil {
+		return record{}, err
+	}
+
+	title, d, err := getDecoder(sen, gen)
+	if err != nil {
+		return record{}, err
+	}
+
+	ed1, ed2, ed3 := splitEventData(ed)
+	r1, r2, r3 := d(ed1, ed2, ed3)
+
+	return record{
+		title: title,
+		ed1:   ed1,
+		r1:    r1,
+		ed2:   ed2,
+		r2:    r2,
+		ed3:   ed3,
+		r3:    r3,
+	}, nil
+}
 
 // 8.10.3 Events
 //
