@@ -2,7 +2,12 @@ version: 2.1
 
 jobs:
   build:
-    working_directory: /home/circleci/go/src/github.com/actapio/moxspec-ocpsel
+    docker:
+      - image: cimg/go:1.16
+    steps:
+      - checkout
+      - run: make test bin
+  report:
     docker:
       - image: cimg/go:1.16
     steps:
@@ -18,3 +23,10 @@ workflows:
     jobs:
       - build:
           context: moxspec
+      - report:
+          context: moxspec
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
