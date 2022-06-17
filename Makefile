@@ -1,26 +1,16 @@
 #!/usr/bin/make -f
 .PHONY: help bin test clean
 
-include $(CURDIR)/Config.mk
+GO := go
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' Makefile | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
 bin: ## build the binary
-ifdef CI
-	$(MAKE) -f Build.mk bin
-else
-	$(DOCKER_RUN) $(CENTOS_CONTAINER) make -f Build.mk bin
-	sudo chown -R $(shell id -u):$(shell id -g) bin
-endif
+	$(GO) build -o bin/ocpsel *.go
 
 test: ## test
-ifdef CI
-	$(MAKE) -f Build.mk test
-else
-	$(DOCKER_RUN) $(CENTOS_CONTAINER) make -f Build.mk test
-	sudo chown -R $(shell id -u):$(shell id -g) c.out
-endif
+	$(GO) test -coverprofile c.out ./...
 
 clean: ## clean all artifacts
 	-rm -rf bin/
