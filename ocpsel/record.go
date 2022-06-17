@@ -1,10 +1,11 @@
-package main
+package ocpsel
 
 import (
 	"fmt"
 	"strings"
 )
 
+// record represents a SEL record
 type record struct {
 	title string
 	ed1   byte
@@ -15,11 +16,13 @@ type record struct {
 	r3    string
 }
 
-func (r record) print() string {
-	return r.printIndent("")
+// Summary returns record summary
+func (r record) Summary() string {
+	return r.SummaryIndent("")
 }
 
-func (r record) printIndent(in string) string {
+// SummaryIndent returns record summary with given indent
+func (r record) SummaryIndent(in string) string {
 	var res []string
 	res = append(res, fmt.Sprintf("%s%s", in, r.title))
 	res = append(res, fmt.Sprintf("%s  ed1 : 0x%02X, %s ... %s", in, r.ed1, dumpBinary(r.ed1), r.r1))

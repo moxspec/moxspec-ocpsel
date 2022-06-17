@@ -1,4 +1,4 @@
-package main
+package ocpsel
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestParseBody(t *testing.T) {
+func TestParseText(t *testing.T) {
 	tests := []struct {
 		filePath   string
 		exNumChunk int
@@ -25,7 +25,7 @@ func TestParseBody(t *testing.T) {
 		}
 
 		t.Run(fmt.Sprintf("%+v", tt), func(t *testing.T) {
-			got := parseBody(in)
+			got := ParseText(in)
 			if len(got) != tt.exNumChunk {
 				t.Errorf("test: %s, got: %d chunks (%+v), expect: %d chunks", tt.filePath, len(got), got, tt.exNumChunk)
 			}
