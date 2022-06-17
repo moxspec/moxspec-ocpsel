@@ -8,7 +8,6 @@ jobs:
       - checkout
       - run: make test bin
   report:
-    working_directory: /home/circleci/go/src/github.com/actapio/moxspec-ocpsel
     docker:
       - image: cimg/go:1.16
     steps:
@@ -17,7 +16,7 @@ jobs:
       - run: chmod +x ./cc-test-reporter
       - run: ./cc-test-reporter before-build
       - run: make test
-      - run: ./cc-test-reporter after-build --exit-code $?
+      - run: ./cc-test-reporter after-build --exit-code $? -p github.com/moxspec/moxspec-ocpsel/
 
 workflows:
   build:
