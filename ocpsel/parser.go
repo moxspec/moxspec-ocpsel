@@ -43,13 +43,13 @@ func ParseText(bod []byte) [][]string {
 func ParseChunkList(chunkList [][]string) []string {
 	var result []string
 	for _, chunk := range chunkList {
-		result = append(result, parseChunk(chunk)...)
+		result = append(result, ParseChunk(chunk)...)
 	}
 	return result
 }
 
-func parseChunk(chunk []string) []string {
-	gens, sens, eds := extractChunkInfo(chunk)
+func ParseChunk(chunk []string) []string {
+	gens, sens, eds := ExtractChunkInfo(chunk)
 
 	res, err := Decode(sens, gens, eds)
 	if err != nil {
@@ -63,7 +63,7 @@ func parseChunk(chunk []string) []string {
 	}
 }
 
-func extractChunkInfo(chunk []string) (string, string, string) {
+func ExtractChunkInfo(chunk []string) (string, string, string) {
 	var gens, sens, eds string
 	for _, line := range chunk {
 		e := strings.Split(line, ":")

@@ -18,7 +18,7 @@ func TestGetDecoder(t *testing.T) {
 		tt := test
 
 		t.Run(fmt.Sprintf("%+v", tt), func(t *testing.T) {
-			_, _, err := getDecoder(tt.sen, tt.gen)
+			_, _, err := GetDecoder(tt.sen, tt.gen)
 
 			if tt.wantsError && err == nil {
 				t.Errorf("test: %+v, wants error but was nil", tt)
