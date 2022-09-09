@@ -25,10 +25,12 @@ $ bin/ocpsel
 
 ```
 $ ocpsel -s 40 -g 0001 -e ab0700 
-Machine Chk Err
-  ed1 : 0xAB, 1010 1011 ... Uncorrectable
-  ed2 : 0x07, 0000 0111 ... Machine Check bank Number: 7
-  ed3 : 0x00, 0000 0000 ... CPU Number: 0, Core Number: 0
+Decoded Info:
+  Summary      : Machine Chk Err
+  Event Data 1 : 0xAB, 1010 1011 ... Uncorrectable
+  Event Data 2 : 0x07, 0000 0111 ... Machine Check bank Number: 7
+  Event Data 3 : 0x00, 0000 0000 ... CPU Number: 0, Core Number: 0
+  Generator    : 0x0001          ... BIOS/UEFI system Firmware
 ```
 
 ```
@@ -45,8 +47,10 @@ SEL Record ID          : 00a1
  Event Direction       : Assertion Event
  Event Data            : ab0700
  Description           : Uncorrectable machine check exception
- Machine Chk Err
-   ed1 : 0xAB, 1010 1011 ... Uncorrectable
-   ed2 : 0x07, 0000 0111 ... Machine Check bank Number: 7
-   ed3 : 0x00, 0000 0000 ... CPU Number: 0, Core Number: 0
+ Decoded Info:
+   Summary      : Machine Chk Err
+   Event Data 1 : 0xAB, 1010 1011 ... Uncorrectable
+   Event Data 2 : 0x07, 0000 0111 ... Machine Check bank Number: 7
+   Event Data 3 : 0x00, 0000 0000 ... CPU Number: 0, Core Number: 0
+   Generator    : 0x0001          ... BIOS/UEFI system Firmware
 ```
