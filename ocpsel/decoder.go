@@ -23,7 +23,7 @@ func Decode(sens, gens, eds string) (record, error) {
 	}
 	ed1, ed2, ed3 := splitEventData(ed)
 
-	title, d, err := getDecoder(sen, gen)
+	title, d, err := GetDecoder(sen, gen)
 	if err != nil { // no decoder found
 		return record{
 			genID:   gen,
@@ -77,9 +77,9 @@ func GetGeneratorNameById(in uint64) string {
 	return res
 }
 
-type decoder func(ed1, ed2, ed3 byte) (r1, r2, r3 string)
+type Decoder func(ed1, ed2, ed3 byte) (r1, r2, r3 string)
 
-func getDecoder(sen, gen uint64) (string, decoder, error) {
+func GetDecoder(sen, gen uint64) (string, Decoder, error) {
 	match := func(s, g uint64) bool {
 		if sen == s && gen == g {
 			return true
@@ -89,7 +89,7 @@ func getDecoder(sen, gen uint64) (string, decoder, error) {
 
 	var (
 		title string
-		d     decoder
+		d     Decoder
 	)
 	switch {
 	case match(0x17, intel):
