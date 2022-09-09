@@ -21,13 +21,17 @@ func Decode(sens, gens, eds string) (record, error) {
 	if err != nil {
 		return record{}, err
 	}
+	ed1, ed2, ed3 := splitEventData(ed)
 
 	title, d, err := getDecoder(sen, gen)
-	if err != nil {
-		return record{}, err
+	if err != nil { // no decoder found
+		return record{
+			ed1: ed1,
+			ed2: ed2,
+			ed3: ed3,
+		}, nil
 	}
 
-	ed1, ed2, ed3 := splitEventData(ed)
 	r1, r2, r3 := d(ed1, ed2, ed3)
 
 	return record{
