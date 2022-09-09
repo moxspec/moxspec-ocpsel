@@ -21,23 +21,31 @@ func Decode(sens, gens, eds string) (record, error) {
 	if err != nil {
 		return record{}, err
 	}
+	ed1, ed2, ed3 := splitEventData(ed)
 
 	title, d, err := getDecoder(sen, gen)
-	if err != nil {
-		return record{}, err
+	if err != nil { // no decoder found
+		return record{
+			genID:   gen,
+			genName: GetGeneratorNameById(gen),
+			ed1:     ed1,
+			ed2:     ed2,
+			ed3:     ed3,
+		}, nil
 	}
 
-	ed1, ed2, ed3 := splitEventData(ed)
 	r1, r2, r3 := d(ed1, ed2, ed3)
 
 	return record{
-		title: title,
-		ed1:   ed1,
-		r1:    r1,
-		ed2:   ed2,
-		r2:    r2,
-		ed3:   ed3,
-		r3:    r3,
+		title:   title,
+		genID:   gen,
+		genName: GetGeneratorNameById(gen),
+		ed1:     ed1,
+		r1:      r1,
+		ed2:     ed2,
+		r2:      r2,
+		ed3:     ed3,
+		r3:      r3,
 	}, nil
 }
 
@@ -55,6 +63,19 @@ const (
 	bios  = 0x0001
 	bmc   = 0x0020
 )
+
+func GetGeneratorNameById(in uint64) string {
+	var res string
+	switch in {
+	case intel:
+		res = "Intel® SPS ME Firmware"
+	case bios:
+		res = "BIOS/UEFI system Firmware"
+	case bmc:
+		res = "BMC Firmware"
+	}
+	return res
+}
 
 type decoder func(ed1, ed2, ed3 byte) (r1, r2, r3 string)
 
